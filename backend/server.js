@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import OpenAI from "openai";
-import { isLegalContent } from "./filters.js";
+import { analyzeContent } from "./filters.js";
 
 const app = express();
 app.use(cors());
