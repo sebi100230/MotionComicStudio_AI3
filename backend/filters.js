@@ -1,14 +1,23 @@
-const bannedWords = [
-  "marvel",
-  "dc",
+const warningTerms = [
   "batman",
-  "spiderman",
+  "dragon ball",
+  "goku",
+  "vegeta",
   "naruto",
   "one piece",
-  "dragon ball"
+  "marvel",
+  "dc"
 ];
 
-export function isLegalContent(pages) {
+export function analyzeContent(pages) {
   const combined = pages.join(" ").toLowerCase();
-  return !bannedWords.some(word => combined.includes(word));
+
+  const warnings = warningTerms.filter(term =>
+    combined.includes(term)
+  );
+
+  return {
+    warnings,
+    hasWarnings: warnings.length > 0
+  };
 }
